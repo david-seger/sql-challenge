@@ -6,8 +6,8 @@
 --		employee salary
 
 SELECT e.emp_no, e.last_name, e.first_name, e.last_name, e.sex, s.salary
-	FROM "Employee" e
-	INNER JOIN "Salary" s on e.emp_no = s.emp_no;
+	FROM "employee" e
+	INNER JOIN "salary" s on e.emp_no = s.emp_no;
 
 
 
@@ -18,7 +18,7 @@ SELECT e.emp_no, e.last_name, e.first_name, e.last_name, e.sex, s.salary
 --		for employees who were hired in 1986.
 
 SELECT first_name, last_name, hire_date
-	FROM "Employee"
+	FROM "employee"
 	WHERE hire_date BETWEEN '1986-01-01' AND '1986-12-31';
 
 
@@ -32,9 +32,9 @@ SELECT first_name, last_name, hire_date
 --		first name.
 
 SELECT	d.dept_no, d.dept_name, dm.emp_no, e.last_name, e.first_name
-FROM	"Departments" d 
-INNER JOIN "Dept_Manager" dm on d.dept_no = dm.dept_no
-INNER JOIN "Employee" e on dm.emp_no = e.emp_no;
+FROM	"departments" d 
+INNER JOIN "dept_manager" dm on d.dept_no = dm.dept_no
+INNER JOIN "employee" e on dm.emp_no = e.emp_no;
 
 
 
@@ -46,9 +46,9 @@ INNER JOIN "Employee" e on dm.emp_no = e.emp_no;
 --		and department name.
 
 SELECT 	e.emp_no, e.last_name, e.first_name, d.dept_name
-FROM 	"Employee" e 
-INNER JOIN "Dept_Emp" de on de.emp_no=e.emp_no
-INNER JOIN "Departments" d on de.dept_no = d.dept_no;
+FROM 	"employee" e 
+INNER JOIN "dept_emp" de on de.emp_no=e.emp_no
+INNER JOIN "departments" d on de.dept_no = d.dept_no;
 
 
 
@@ -58,7 +58,7 @@ INNER JOIN "Departments" d on de.dept_no = d.dept_no;
 --			last names begin with "B."
 
 SELECT 	first_name, last_name, sex 
-FROM	"Employee"
+FROM	"employee"
 WHERE	first_name = 'Hercules'
 AND		last_name LIKE 'B%';
 
@@ -71,9 +71,9 @@ AND		last_name LIKE 'B%';
 --		and department name.
 
 SELECT	e.emp_no, e.last_name, e.first_name, d.dept_name
-FROM	"Employee" e 
-INNER JOIN "Dept_Emp" de on e.emp_no = de.emp_no
-INNER JOIN "Departments" d on de.dept_no = d.dept_no
+FROM	"employee" e 
+INNER JOIN "dept_emp" de on e.emp_no = de.emp_no
+INNER JOIN "departments" d on de.dept_no = d.dept_no
 WHERE	d.dept_name = 'Sales';
 
 
@@ -84,9 +84,9 @@ WHERE	d.dept_name = 'Sales';
 --		and department name.
 
 SELECT	e.emp_no, e.last_name, e.first_name, d.dept_name
-FROM	"Employee" e 
-INNER JOIN "Dept_Emp" de on e.emp_no = de.emp_no
-INNER JOIN "Departments" d on de.dept_no = d.dept_no
+FROM	"employee" e 
+INNER JOIN "dept_emp" de on e.emp_no = de.emp_no
+INNER JOIN "departments" d on de.dept_no = d.dept_no
 WHERE	d.dept_name in ('Sales','Development');
 
 
@@ -95,7 +95,7 @@ WHERE	d.dept_name in ('Sales','Development');
 --		i.e., how many employees share each last name.
 
 SELECT	last_name, count(*) 
-FROM	"Employee"
+FROM	"employee"
 GROUP BY last_name
 ORDER BY last_name desc;
 
